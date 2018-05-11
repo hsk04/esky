@@ -4,6 +4,12 @@ import java.text.SimpleDateFormat;
 
 public class City {
 
+	// private String id;
+	//
+	// public City() {
+	// this.id = UUID.randomUUID().toString();
+	// }
+
 	private String cityName;
 	private String description;
 	private double humidity;
@@ -12,6 +18,14 @@ public class City {
 	private double windSpeed;
 	private double windDegree;
 	private SimpleDateFormat timeStamp;
+
+	// public String getId() {
+	// return id;
+	// }
+	//
+	// public void setId(String id) {
+	// this.id = id;
+	// }
 
 	public String getName() {
 		return cityName;
