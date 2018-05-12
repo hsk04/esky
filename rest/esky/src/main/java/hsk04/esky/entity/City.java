@@ -1,6 +1,7 @@
 package hsk04.esky.entity;
 
 import java.text.SimpleDateFormat;
+import java.util.UUID;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -8,13 +9,8 @@ import javax.persistence.Id;
 @Entity
 public class City {
 
-	// private String id;
-	//
-	// public City() {
-	// this.id = UUID.randomUUID().toString();
-	// }
-
 	@Id
+	private String id;
 	private String cityName;
 	private String description;
 	private double humidity;
@@ -24,13 +20,17 @@ public class City {
 	private double windDegree;
 	private SimpleDateFormat timeStamp;
 
-	// public String getId() {
-	// return id;
-	// }
-	//
-	// public void setId(String id) {
-	// this.id = id;
-	// }
+	public City() {
+		this.id = UUID.randomUUID().toString();
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
 
 	public String getName() {
 		return cityName;
