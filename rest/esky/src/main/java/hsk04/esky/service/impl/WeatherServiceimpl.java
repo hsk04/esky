@@ -3,6 +3,7 @@ package hsk04.esky.service.impl;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import hsk04.esky.entity.City;
 import hsk04.esky.exception.NotFoundException;
@@ -19,16 +20,19 @@ public class WeatherServiceimpl implements WeatherService {
 	}
 
 	@Override
+	@Transactional
 	public City create(City city) {
 		return repository.create(city);
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public List<String> listOfCities() {
 		return repository.listOfCities();
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public City latestWeather(String cityName) {
 		City existing = repository.latestWeather(cityName);
 		if (existing == null) {
@@ -38,6 +42,7 @@ public class WeatherServiceimpl implements WeatherService {
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public double latestTemperature(String cityName) {
 		City existing = repository.latestWeather(cityName);
 		if (existing == null) {
@@ -47,6 +52,7 @@ public class WeatherServiceimpl implements WeatherService {
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public City hourlyAverage(String cityName) {
 		City existing = repository.hourlyAverage(cityName);
 		if (existing == null) {
@@ -56,6 +62,7 @@ public class WeatherServiceimpl implements WeatherService {
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public City dailyAverage(String cityName) {
 		City existing = repository.dailyAverage(cityName);
 		if (existing == null) {

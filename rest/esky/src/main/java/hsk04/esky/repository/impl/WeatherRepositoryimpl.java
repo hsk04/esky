@@ -3,6 +3,9 @@ package hsk04.esky.repository.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import org.springframework.stereotype.Repository;
 
 import hsk04.esky.entity.City;
@@ -10,6 +13,9 @@ import hsk04.esky.repository.WeatherRepository;
 
 @Repository
 public class WeatherRepositoryimpl implements WeatherRepository {
+
+	@PersistenceContext
+	private EntityManager em;
 
 	@Override
 	public City create(City city) {
