@@ -33,7 +33,7 @@ public class JPAConfig {
 		DriverManagerDataSource ds = new DriverManagerDataSource();
 		ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
 		ds.setUrl(
-				"jdbc:mysql://localhost:3306/example-db?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
+				"jdbc:mysql://localhost:3306/example-db?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&autoReconnect=true&useSSL=false");
 		// ds.setUrl("jdbc:mysql://localhost:3306/example-db");
 		ds.setUsername("root");
 		ds.setPassword("root");
