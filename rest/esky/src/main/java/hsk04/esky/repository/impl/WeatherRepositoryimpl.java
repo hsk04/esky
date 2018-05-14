@@ -8,7 +8,7 @@ import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
 
-import hsk04.esky.entity.City;
+import hsk04.esky.entity.ECity;
 import hsk04.esky.repository.WeatherRepository;
 
 @Repository
@@ -18,11 +18,8 @@ public class WeatherRepositoryimpl implements WeatherRepository {
 	private EntityManager em;
 
 	@Override
-	public City create(City city) {
-		city.setName("Fort Collins");
-		city.setTemperature(60);
-		city.setDescription("sunny");
-		city.setHumidity(50);
+	public ECity create(ECity city) {
+		em.persist(city);
 		return city;
 	}
 
@@ -39,27 +36,27 @@ public class WeatherRepositoryimpl implements WeatherRepository {
 	}
 
 	@Override
-	public City latestWeather(String cityName) {
-		City city = new City();
-		city.setName("Fort Collins");
-		city.setTemperature(60);
-		city.setDescription("sunny");
-		city.setHumidity(50);
-		return city;
+	public ECity latestWeather(String city) {
+		ECity ecity = new ECity();
+		ecity.setName("Fort Collins");
+		ecity.setTemperature(60);
+		ecity.setDescription("sunny");
+		ecity.setHumidity(50);
+		return ecity;
 	}
 
 	@Override
-	public double latestTemperature(String cityName) {
+	public double latestTemperature(String city) {
 		return 0;
 	}
 
 	@Override
-	public City hourlyAverage(String cityName) {
+	public ECity hourlyAverage(String city) {
 		return null;
 	}
 
 	@Override
-	public City dailyAverage(String cityName) {
+	public ECity dailyAverage(String city) {
 		return null;
 	}
 

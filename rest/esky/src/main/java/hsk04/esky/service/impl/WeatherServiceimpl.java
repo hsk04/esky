@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import hsk04.esky.entity.City;
+import hsk04.esky.entity.ECity;
 import hsk04.esky.exception.NotFoundException;
 import hsk04.esky.repository.WeatherRepository;
 import hsk04.esky.service.WeatherService;
@@ -21,8 +21,8 @@ public class WeatherServiceimpl implements WeatherService {
 
 	@Override
 	@Transactional
-	public City create(City city) {
-		return repository.create(city);
+	public ECity create(ECity ecity) {
+		return repository.create(ecity);
 	}
 
 	@Override
@@ -33,42 +33,42 @@ public class WeatherServiceimpl implements WeatherService {
 
 	@Override
 	@Transactional(readOnly = true)
-	public City latestWeather(String cityName) {
-		City existing = repository.latestWeather(cityName);
+	public ECity latestWeather(String city) {
+		ECity existing = repository.latestWeather(city);
 		if (existing == null) {
-			throw new NotFoundException("Specified " + cityName + " " + "does not exist in the database");
+			throw new NotFoundException("Specified " + city + " " + "does not exist in the database");
 		}
-		return repository.latestWeather(cityName);
+		return repository.latestWeather(city);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
-	public double latestTemperature(String cityName) {
-		City existing = repository.latestWeather(cityName);
+	public double latestTemperature(String city) {
+		ECity existing = repository.latestWeather(city);
 		if (existing == null) {
-			throw new NotFoundException("Specified " + cityName + " " + "does not exist in the database");
+			throw new NotFoundException("Specified " + city + " " + "does not exist in the database");
 		}
-		return repository.latestTemperature(cityName);
+		return repository.latestTemperature(city);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
-	public City hourlyAverage(String cityName) {
-		City existing = repository.hourlyAverage(cityName);
+	public ECity hourlyAverage(String city) {
+		ECity existing = repository.hourlyAverage(city);
 		if (existing == null) {
-			throw new NotFoundException("Specified " + cityName + " " + "does not exist in the database");
+			throw new NotFoundException("Specified " + city + " " + "does not exist in the database");
 		}
-		return repository.hourlyAverage(cityName);
+		return repository.hourlyAverage(city);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
-	public City dailyAverage(String cityName) {
-		City existing = repository.dailyAverage(cityName);
+	public ECity dailyAverage(String city) {
+		ECity existing = repository.dailyAverage(city);
 		if (existing == null) {
-			throw new NotFoundException("Specified " + cityName + " " + "does not exist in the database");
+			throw new NotFoundException("Specified " + city + " " + "does not exist in the database");
 		}
-		return repository.dailyAverage(cityName);
+		return repository.dailyAverage(city);
 	}
 
 }

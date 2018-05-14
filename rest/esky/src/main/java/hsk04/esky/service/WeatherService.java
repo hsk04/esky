@@ -2,19 +2,19 @@ package hsk04.esky.service;
 
 import java.util.List;
 
-import hsk04.esky.entity.City;
+import hsk04.esky.entity.ECity;
 
 public interface WeatherService {
 
-	public City create(City city);
+	public ECity create(ECity city);
 
 	public List<String> listOfCities();
 
-	public City latestWeather(String cityName);
+	public ECity latestWeather(String city);
 
-	public double latestTemperature(String cityName);
+	public double latestTemperature(String city);
 
-	public City hourlyAverage(String cityName);
+	public ECity hourlyAverage(String city);
 
-	public City dailyAverage(String cityName);
+	public ECity dailyAverage(String city);
 }

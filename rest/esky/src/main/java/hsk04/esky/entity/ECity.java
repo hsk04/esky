@@ -7,20 +7,20 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class City {
+public class ECity {
 
 	@Id
 	private String id;
-	private String cityName;
+	private String city;
 	private String description;
 	private double humidity;
 	private double pressure;
 	private double temperature;
-	private double windSpeed;
-	private double windDegree;
-	private SimpleDateFormat timeStamp;
+	private double windspeed;
+	private double winddegree;
+	private SimpleDateFormat timestamp;
 
-	public City() {
+	public ECity() {
 		this.id = UUID.randomUUID().toString();
 	}
 
@@ -33,11 +33,11 @@ public class City {
 	}
 
 	public String getName() {
-		return cityName;
+		return city;
 	}
 
-	public void setName(String cityName) {
-		this.cityName = cityName;
+	public void setName(String city) {
+		this.city = city;
 	}
 
 	public String getDescription() {
@@ -73,26 +73,26 @@ public class City {
 	}
 
 	public double getWindSpeed() {
-		return windSpeed;
+		return windspeed;
 	}
 
-	public void setWindSpeed(double windSpeed) {
-		this.windSpeed = windSpeed;
+	public void setWindSpeed(double windspeed) {
+		this.windspeed = windspeed;
 	}
 
 	public double getWindDegree() {
-		return windDegree;
+		return winddegree;
 	}
 
-	public void setWindDegree(double windDegree) {
-		this.windDegree = windDegree;
+	public void setWindDegree(double winddegree) {
+		this.winddegree = winddegree;
 	}
 
 	public SimpleDateFormat getTimeStamp() {
-		return timeStamp;
+		return timestamp;
 	}
 
-	public void setTimeStamp(SimpleDateFormat timeStamp) {
-		this.timeStamp = timeStamp;
+	public void setTimeStamp(SimpleDateFormat timestamp) {
+		this.timestamp = timestamp;
 	}
 }

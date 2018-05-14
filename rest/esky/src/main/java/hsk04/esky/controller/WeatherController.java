@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import hsk04.esky.constants.URI;
-import hsk04.esky.entity.City;
+import hsk04.esky.entity.ECity;
 import hsk04.esky.service.WeatherService;
 
 @RestController
@@ -24,8 +24,8 @@ public class WeatherController {
 
 	// handle weather postings from mocker
 	@RequestMapping(method = RequestMethod.POST)
-	public City create(@RequestBody City city) {
-		return service.create(city);
+	public ECity create(@RequestBody ECity ecity) {
+		return service.create(ecity);
 	}
 
 	// Get the list of cities that have ever reported their weather in the past
@@ -36,29 +36,29 @@ public class WeatherController {
 
 	// Get the latest weather for a given city
 	@RequestMapping(method = RequestMethod.GET, value = URI.LATEST_CITY)
-	public City latestWeather(@PathVariable("cityName") String cityName) {
-		return service.latestWeather(cityName);
+	public ECity latestWeather(@PathVariable("city") String city) {
+		return service.latestWeather(city);
 	}
 
 	// Get the latest weather property for a given city
 	// specific attribute return
 
 	@RequestMapping(method = RequestMethod.GET, value = URI.LATEST_TEMPERATURE)
-	public double latestTemperature(@PathVariable("cityName") String cityName) {
-		return service.latestTemperature(cityName);
+	public double latestTemperature(@PathVariable("city") String city) {
+		return service.latestTemperature(city);
 	}
 
 	// specific attribute return
 
 	// Get hourly averaged weather for a given city
 	@RequestMapping(method = RequestMethod.GET, value = URI.HOURLY_CITY)
-	public City hourlyAverage(@PathVariable("cityName") String cityName) {
-		return service.hourlyAverage(cityName);
+	public ECity hourlyAverage(@PathVariable("city") String city) {
+		return service.hourlyAverage(city);
 	}
 
 	// Get daily averaged weather for a given city
 	@RequestMapping(method = RequestMethod.GET, value = URI.DAILY_CITY)
-	public City dailyAverage(@PathVariable("cityName") String cityName) {
-		return service.dailyAverage(cityName);
+	public ECity dailyAverage(@PathVariable("city") String city) {
+		return service.dailyAverage(city);
 	}
 }
