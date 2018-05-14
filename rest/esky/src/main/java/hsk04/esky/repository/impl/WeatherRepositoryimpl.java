@@ -18,9 +18,9 @@ public class WeatherRepositoryimpl implements WeatherRepository {
 	private EntityManager em;
 
 	@Override
-	public ECity create(ECity city) {
-		em.persist(city);
-		return city;
+	public ECity create(ECity ecity) {
+		em.persist(ecity);
+		return ecity;
 	}
 
 	@Override
@@ -37,12 +37,7 @@ public class WeatherRepositoryimpl implements WeatherRepository {
 
 	@Override
 	public ECity latestWeather(String city) {
-		ECity ecity = new ECity();
-		ecity.setName("Fort Collins");
-		ecity.setTemperature(60);
-		ecity.setDescription("sunny");
-		ecity.setHumidity(50);
-		return ecity;
+		return null;
 	}
 
 	@Override

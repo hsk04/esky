@@ -1,24 +1,17 @@
 package hsk04.esky.entity;
 
-import java.text.SimpleDateFormat;
 import java.util.UUID;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class ECity {
 
 	@Id
 	private String id;
-	private String city;
-	private String description;
-	private double humidity;
-	private double pressure;
-	private double temperature;
-	private double windspeed;
-	private double winddegree;
-	private SimpleDateFormat timestamp;
 
 	public ECity() {
 		this.id = UUID.randomUUID().toString();
@@ -32,67 +25,72 @@ public class ECity {
 		this.id = id;
 	}
 
-	public String getName() {
-		return city;
-	}
+	private String city;
+	private String description;
+	private float humidity;
+	private float pressure;
+	private float temperature;
+	@OneToOne(cascade = CascadeType.ALL)
+	Wind WindObject;
+	private String timestamp;
 
-	public void setName(String city) {
-		this.city = city;
+	// Getter Methods
+
+	public String getCity() {
+		return city;
 	}
 
 	public String getDescription() {
 		return description;
 	}
 
+	public float getHumidity() {
+		return humidity;
+	}
+
+	public float getPressure() {
+		return pressure;
+	}
+
+	public float getTemperature() {
+		return temperature;
+	}
+
+	public Wind getWind() {
+		return WindObject;
+	}
+
+	public String getTimestamp() {
+		return timestamp;
+	}
+
+	// Setter Methods
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
-	public double getHumidity() {
-		return humidity;
-	}
-
-	public void setHumidity(double humidity) {
+	public void setHumidity(float humidity) {
 		this.humidity = humidity;
 	}
 
-	public double getPressure() {
-		return pressure;
-	}
-
-	public void setPressure(double pressure) {
+	public void setPressure(float pressure) {
 		this.pressure = pressure;
 	}
 
-	public double getTemperature() {
-		return temperature;
-	}
-
-	public void setTemperature(double temperature) {
+	public void setTemperature(float temperature) {
 		this.temperature = temperature;
 	}
 
-	public double getWindSpeed() {
-		return windspeed;
+	public void setWind(Wind windObject) {
+		this.WindObject = windObject;
 	}
 
-	public void setWindSpeed(double windspeed) {
-		this.windspeed = windspeed;
-	}
-
-	public double getWindDegree() {
-		return winddegree;
-	}
-
-	public void setWindDegree(double winddegree) {
-		this.winddegree = winddegree;
-	}
-
-	public SimpleDateFormat getTimeStamp() {
-		return timestamp;
-	}
-
-	public void setTimeStamp(SimpleDateFormat timestamp) {
+	public void setTimestamp(String timestamp) {
 		this.timestamp = timestamp;
 	}
 }
