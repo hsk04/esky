@@ -41,11 +41,42 @@ public class WeatherController {
 	}
 
 	// Get the latest weather property for a given city
+
 	// specific attribute return
 
+	@RequestMapping(method = RequestMethod.GET, value = URI.LATEST_DESCRIPTION)
+	public String latestDescription(@PathVariable("city") String city) {
+		return service.latestDescription(city);
+	}
+
+	@RequestMapping(method = RequestMethod.GET, value = URI.LATEST_HUMIDITY)
+	public float latestHumidity(@PathVariable("city") String city) {
+		return service.latestHumidity(city);
+	}
+
+	@RequestMapping(method = RequestMethod.GET, value = URI.LATEST_PRESSURE)
+	public float latestPressure(@PathVariable("city") String city) {
+		return service.latestPressure(city);
+	}
+
 	@RequestMapping(method = RequestMethod.GET, value = URI.LATEST_TEMPERATURE)
-	public double latestTemperature(@PathVariable("city") String city) {
+	public float latestTemperature(@PathVariable("city") String city) {
 		return service.latestTemperature(city);
+	}
+
+	@RequestMapping(method = RequestMethod.GET, value = URI.LATEST_WINDSPEED)
+	public float latestWindSpeed(@PathVariable("city") String city) {
+		return service.latestWindSpeed(city);
+	}
+
+	@RequestMapping(method = RequestMethod.GET, value = URI.LATEST_WINDDEGREE)
+	public float latestWindDegree(@PathVariable("city") String city) {
+		return service.latestWindDegree(city);
+	}
+
+	@RequestMapping(method = RequestMethod.GET, value = URI.LATEST_TIMESTAMP)
+	public String latestTimeStamp(@PathVariable("city") String city) {
+		return service.latestTimeStamp(city);
 	}
 
 	// specific attribute return

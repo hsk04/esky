@@ -38,17 +38,77 @@ public class WeatherServiceimpl implements WeatherService {
 		if (existing == null) {
 			throw new NotFoundException("Specified " + city + " " + "does not exist in the database");
 		}
-		return repository.latestWeather(city);
+		return existing;
 	}
 
 	@Override
 	@Transactional(readOnly = true)
-	public double latestTemperature(String city) {
-		ECity existing = repository.latestWeather(city);
-		if (existing == null) {
+	public String latestDescription(String city) {
+		String existing = repository.latestDescription(city);
+		if (existing == " ") {
 			throw new NotFoundException("Specified " + city + " " + "does not exist in the database");
 		}
-		return repository.latestTemperature(city);
+		return existing;
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public float latestHumidity(String city) {
+		float existing = repository.latestHumidity(city);
+		if (existing < 0) {
+			throw new NotFoundException("Specified " + city + " " + "does not exist in the database");
+		}
+		return existing;
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public float latestPressure(String city) {
+		float existing = repository.latestPressure(city);
+		if (existing < 0) {
+			throw new NotFoundException("Specified " + city + " " + "does not exist in the database");
+		}
+		return existing;
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public float latestTemperature(String city) {
+		float existing = repository.latestTemperature(city);
+		if (existing < 0) {
+			throw new NotFoundException("Specified " + city + " " + "does not exist in the database");
+		}
+		return existing;
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public float latestWindSpeed(String city) {
+		float existing = repository.latestWindSpeed(city);
+		if (existing < 0) {
+			throw new NotFoundException("Specified " + city + " " + "does not exist in the database");
+		}
+		return existing;
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public float latestWindDegree(String city) {
+		float existing = repository.latestWindDegree(city);
+		if (existing < 0) {
+			throw new NotFoundException("Specified " + city + " " + "does not exist in the database");
+		}
+		return existing;
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public String latestTimeStamp(String city) {
+		String existing = repository.latestTimeStamp(city);
+		if (existing == " ") {
+			throw new NotFoundException("Specified " + city + " " + "does not exist in the database");
+		}
+		return existing;
 	}
 
 	@Override

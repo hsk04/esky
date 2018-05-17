@@ -5,9 +5,13 @@ import java.util.UUID;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 
 @Entity
+@NamedQueries({ @NamedQuery(name = "ECity.getLatestCity", query = "SELECT e FROM ECity e where e.city=:pCity"),
+		@NamedQuery(name = "ECity.getUniqueCity", query = "SELECT DISTINCT(e.city) FROM ECity e"), })
 public class ECity {
 
 	@Id
