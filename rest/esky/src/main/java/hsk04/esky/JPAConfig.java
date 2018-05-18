@@ -5,8 +5,11 @@ import java.util.Properties;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -16,7 +19,11 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
+@PropertySource(value = "classpath:application.properties")
 public class JPAConfig {
+
+	@Autowired
+	private Environment env;
 
 	@Bean
 	public LocalContainerEntityManagerFactoryBean emf() {
@@ -32,10 +39,9 @@ public class JPAConfig {
 	public DataSource getDS() {
 		DriverManagerDataSource ds = new DriverManagerDataSource();
 		ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
-		ds.setUrl(
-				"jdbc:mysql://localhost:3306/example-db?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&autoReconnect=true&useSSL=false");
-		ds.setUsername("root");
-		ds.setPassword("root");
+		ds.setUrl(env.getProperty("db.url"));
+		ds.setUsername(env.getProperty("db.user"));
+		ds.setPassword(env.getProperty("db.password"));
 		return ds;
 	}
 
@@ -47,9 +53,9 @@ public class JPAConfig {
 	private Properties jpaProperties() {
 		Properties props = new Properties();
 		props.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
-		props.setProperty("hibernate.hbm2ddl.auto", "create-drop");
-		props.setProperty("hibernate.show_sql", "true");
-		props.setProperty("hibernate.format_sql", "true");
+		props.setProperty("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
+		props.setProperty("hibernate.show_sql", env.getProperty("hibernate.show.sql"));
+		props.setProperty("hibernate.format_sql", env.getProperty("hibernate.format.sql"));
 		return props;
 	}
 }
