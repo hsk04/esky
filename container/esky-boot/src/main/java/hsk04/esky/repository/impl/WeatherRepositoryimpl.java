@@ -226,6 +226,7 @@ public class WeatherRepositoryimpl implements WeatherRepository {
 			} else {
 				ECity avg = new ECity();
 				Wind windObject = new Wind();
+				avg.setCity(city);
 				avg.setDescription("Not Applicable");
 				avg.setTimestamp("Not Applicable");
 				avg.setWind(windObject);
