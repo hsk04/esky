@@ -18,7 +18,7 @@ import io.swagger.annotations.ApiResponses;
 
 @RestController
 @RequestMapping(value = URI.WEATHER)
-@CrossOrigin(origins="http://mocker.egen.io")
+@CrossOrigin(origins="*")
 public class WeatherController {
 
 	private WeatherService service;
