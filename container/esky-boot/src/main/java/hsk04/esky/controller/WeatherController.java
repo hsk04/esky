@@ -2,6 +2,7 @@ package hsk04.esky.controller;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,7 @@ import io.swagger.annotations.ApiResponses;
 
 @RestController
 @RequestMapping(value = URI.WEATHER)
+@CrossOrigin(origins="http://mocker.egen.io")
 public class WeatherController {
 
 	private WeatherService service;
